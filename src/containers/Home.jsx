@@ -40,6 +40,23 @@ class Home extends Component {
     return (
       <div>
         <div className="container">
+          <nav className="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+            <span className="navbar-brand">Employee Directory</span>
+            <form className="form-inline my-2 my-lg-0">
+              <input
+                className="form-control mr-sm-2"
+                type="search"
+                placeholder="Employee Name"
+                aria-label="Search"
+              />
+              <button
+                className="btn btn-outline-success my-2 my-sm-0 float-right"
+                type="submit"
+              >
+                Search By Name
+              </button>
+            </form>
+          </nav>
           <div className="row">
             <div className="col">
               <table className="table table-striped">
