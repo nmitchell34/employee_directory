@@ -23,7 +23,7 @@ class Home extends Component {
     // this.sortEmployees();
   }
 
-  sortEmployees = () => {
+  sortEmployeesByName = () => {
     function compare(a, b) {
       if (a.employee_name > b.employee_name) return 1;
       if (b.employee_name > a.employee_name) return -1;
@@ -52,14 +52,14 @@ class Home extends Component {
                   </tr>
                 </thead>
                 <tbody>
-                  {this.state.employees.map((employee) => {
+                  {this.state.employees.map((employee) => (
                     <tr>
                       <th scope="row">{employee.id}</th>
-                      <td>{employee.name}</td>
-                      <td>{employee.salary}</td>
-                      <td>{employee.age}</td>
-                    </tr>;
-                  })}
+                      <td>{employee.employee_name}</td>
+                      <td>{employee.employee_salary}</td>
+                      <td>{employee.employee_age}</td>
+                    </tr>
+                  ))}
                 </tbody>
               </table>
             </div>
