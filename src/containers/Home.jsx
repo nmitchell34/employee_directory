@@ -1,26 +1,30 @@
 import React, { Component } from "react";
+import Axios from "axios";
 
 class Home extends Component {
   state = {
-    employees: [
-      {
-        id: 1,
-        employee_name: "Nick Mitchell",
-        employee_salary: 100000,
-        employee_age: 22,
-        profile_image: "",
-      },
-      {
-        id: 2,
-        employee_name: "Joe Louis",
-        employee_salary: 75000,
-        employee_age: 43,
-        profile_image: "",
-      },
-    ],
+    employees: []
+//       {
+//         id: 1,
+//         employee_name: "Nick Mitchell",
+//         employee_salary: 100000,
+//         employee_age: 22,
+//         profile_image: "",
+//       },
+//       {
+//         id: 2,
+//         employee_name: "Joe Louis",
+//         employee_salary: 75000,
+//         employee_age: 43,
+//         profile_image: "",
+//       },
+//     ],
   };
   componentDidMount() {
-    // this.sortEmployees();
+    Axios.get("https://randomuser.me/api/?results=50").then(result=>{
+        console.log(result.data.results)
+        this.setState({employees : result.data.results})
+    })
   }
 
   sortEmployeesByName = () => {
