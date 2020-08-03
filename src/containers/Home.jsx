@@ -57,6 +57,8 @@ class Home extends Component {
               </button>
             </form>
           </nav>
+          <br/>
+          <br/>
           <div className="row">
             <div className="col">
               <table className="table table-striped">
