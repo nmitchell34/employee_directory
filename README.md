@@ -20,7 +20,9 @@
   
   
   ## Usage 
-  To use this project, click the deployed link below.  Click the age column header to sort employees by age, or input a name in the employee name input section and click the search button to filter the list.
+  To use this project, click the deployed link below.<br><br>https://nmitchell34.github.io/employee_directory/<br><br>Click the age column header to sort employees by age, or input a name in the employee name input section and click the search button to filter the list.
+
+  ![employee_directory](./public/2020-08-03.png)
   
   
   ## Contributing
