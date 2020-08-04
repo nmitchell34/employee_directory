@@ -36,27 +36,15 @@ class Home extends Component {
   sortEmployeesByAge = (field) => {
     console.log("button clicked");
     console.log(field)
-    // function sortAsc(a, b) {
-    //   if (a.dob.age > b.dob.age) return 1;
-    //   if (b.dob.age > a.dob.age) return -1;
-
-    //   return 0;
-    // }
-    // function sortDesc(a, b) {
-    //   if (a.dob.age > b.dob.age) return -1;
-    //   if (b.dob.age > a.dob.age) return 1;
-
-    //   return 0;
-    // }
     function sortAsc(a, b) {
-      if (a[field] > b[field]) return 1;
-      if (b[field] > a[field]) return -1;
+      if (a.dob.age > b.dob.age) return 1;
+      if (b.dob.age > a.dob.age) return -1;
 
       return 0;
     }
     function sortDesc(a, b) {
-      if (a[field] > b[field]) return -1;
-      if (b[field] > a[field]) return 1;
+      if (a.dob.age > b.dob.age) return -1;
+      if (b.dob.age > a.dob.age) return 1;
 
       return 0;
     }
@@ -112,7 +100,7 @@ class Home extends Component {
                       <button
                         className="btn btn-light"
                         onClick={() => {
-                          this.sortEmployeesByAge(".dob.age");
+                          this.sortEmployeesByAge();
                         }}
                       >
                         Age
