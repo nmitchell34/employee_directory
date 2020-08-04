@@ -35,7 +35,6 @@ class Home extends Component {
 
   sortEmployeesByAge = () => {
     console.log("button clicked");
-    console.log(field)
     function sortAsc(a, b) {
       if (a.dob.age > b.dob.age) return 1;
       if (b.dob.age > a.dob.age) return -1;
