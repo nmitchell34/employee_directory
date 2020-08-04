@@ -5,21 +5,7 @@ class Home extends Component {
   state = {
     sortFlip: true,
     employees: [],
-    //       {
-    //         id: 1,
-    //         employee_name: "Nick Mitchell",
-    //         employee_salary: 100000,
-    //         employee_age: 22,
-    //         profile_image: "",
-    //       },
-    //       {
-    //         id: 2,
-    //         employee_name: "Joe Louis",
-    //         employee_salary: 75000,
-    //         employee_age: 43,
-    //         profile_image: "",
-    //       },
-    //     ],
+    searchName: "",
   };
   componentDidMount() {
     Axios.get("https://randomuser.me/api/?results=50").then((result) => {
@@ -32,6 +18,21 @@ class Home extends Component {
       console.log(this.state.employees);
     });
   }
+
+  handleInputChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      searchName: value,
+    });
+  };
+  handleFormSubmit = (event) => {
+    event.preventDefault();
+    function filterNames(name) {
+        console.log(this)
+    //   return this.employee_name.includes(name);
+    }
+    this.state.employees.filter(filterNames(this.state.searchName));
+  };
 
   sortEmployeesByAge = () => {
     console.log("button clicked");
@@ -73,12 +74,15 @@ class Home extends Component {
               <input
                 className="form-control mr-sm-2"
                 type="search"
+                id="searchBtn"
                 placeholder="Employee Name"
                 aria-label="Search"
+                onChange={this.handleInputChange}
               />
               <button
                 className="btn btn-outline-success my-2 my-sm-0 float-right"
                 type="submit"
+                onClick={this.handleFormSubmit}
               >
                 Search By Name
               </button>
