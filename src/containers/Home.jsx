@@ -27,11 +27,13 @@ class Home extends Component {
   };
   handleFormSubmit = (event) => {
     event.preventDefault();
-    function filterNames(name) {
-        console.log(this)
-    //   return this.employee_name.includes(name);
-    }
-    this.state.employees.filter(filterNames(this.state.searchName));
+    const currentSearchName = this.state.searchName;
+    const filteredEmployees = this.state.employees.filter((employee) =>
+      employee.employee_name.toLowerCase().includes(currentSearchName.toLowerCase())
+    );
+    this.setState({
+      employees: filteredEmployees,
+    });
   };
 
   sortEmployeesByAge = () => {
@@ -96,7 +98,7 @@ class Home extends Component {
                 <thead>
                   <tr>
                     <th scope="col">ID</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Employee Name</th>
                     <th scope="col">City</th>
                     <th scope="col">Email</th>
                     <th scope="col">
