@@ -3,6 +3,7 @@ import Axios from "axios";
 
 class Home extends Component {
   state = {
+    sortFlip: true,
     employees: [],
     //       {
     //         id: 1,
@@ -32,18 +33,48 @@ class Home extends Component {
     });
   }
 
-  sortEmployeesByAge = () => {
-    function compare(a, b) {
-      if (a.dob.age > b.dob.age) return 1;
-      if (b.dob.age > a.dob.age) return -1;
+  sortEmployeesByAge = (field) => {
+    console.log("button clicked");
+    console.log(field)
+    // function sortAsc(a, b) {
+    //   if (a.dob.age > b.dob.age) return 1;
+    //   if (b.dob.age > a.dob.age) return -1;
+
+    //   return 0;
+    // }
+    // function sortDesc(a, b) {
+    //   if (a.dob.age > b.dob.age) return -1;
+    //   if (b.dob.age > a.dob.age) return 1;
+
+    //   return 0;
+    // }
+    function sortAsc(a, b) {
+      if (a[field] > b[field]) return 1;
+      if (b[field] > a[field]) return -1;
 
       return 0;
     }
-    const sortedEmployees = this.state.employees.sort(compare);
-    // console.log(sortedEmployees);
-    this.setState({
-      employees: sortedEmployees,
-    });
+    function sortDesc(a, b) {
+      if (a[field] > b[field]) return -1;
+      if (b[field] > a[field]) return 1;
+
+      return 0;
+    }
+    if (this.state.sortFlip) {
+      const sortedEmployees = this.state.employees.sort(sortAsc);
+      // console.log(sortedEmployees);
+      this.setState({
+        employees: sortedEmployees,
+        sortFlip: false,
+      });
+    } else {
+      const sortedEmployees = this.state.employees.sort(sortDesc);
+      // console.log(sortedEmployees);
+      this.setState({
+        employees: sortedEmployees,
+        sortFlip: true,
+      });
+    }
   };
   render() {
     return (
@@ -78,7 +109,12 @@ class Home extends Component {
                     <th scope="col">City</th>
                     <th scope="col">Email</th>
                     <th scope="col">
-                      <button className="btn" onClick={this.sortEmployeesByAge} style={{all:"unset"}}>
+                      <button
+                        className="btn btn-light"
+                        onClick={() => {
+                          this.sortEmployeesByAge(".dob.age");
+                        }}
+                      >
                         Age
                       </button>
                     </th>
