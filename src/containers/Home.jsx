@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import Axios from "axios";
-
+// Class is defined for whole project essentially.
+// State added, sortFlip will allow user to sort by asc or desc in Age column.
 class Home extends Component {
   state = {
     sortFlip: true,
     employees: [],
     searchName: "",
   };
+  //   At start, random individuals are generated from this axios call.
+  // A key (id) is added and the employees first and last name is combined for later use.
   componentDidMount() {
     Axios.get("https://randomuser.me/api/?results=50").then((result) => {
       const employees = result.data.results;
@@ -18,26 +21,30 @@ class Home extends Component {
       console.log(this.state.employees);
     });
   }
-
+  // on change of the search bar, the searchName state is updated.
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
       searchName: value,
     });
   };
+
+  // On submit of the employee name input, the employees array is filtered by
+  //   name to see if it includes what the user input to the search bar.
   handleFormSubmit = (event) => {
     event.preventDefault();
     const currentSearchName = this.state.searchName;
     const filteredEmployees = this.state.employees.filter((employee) =>
-      employee.employee_name.toLowerCase().includes(currentSearchName.toLowerCase())
+      employee.employee_name
+        .toLowerCase()
+        .includes(currentSearchName.toLowerCase())
     );
     this.setState({
       employees: filteredEmployees,
     });
   };
-
+  // sort employees by age checks the state of sortFlip and will sort by asc or desc depending on that.
   sortEmployeesByAge = () => {
-    console.log("button clicked");
     function sortAsc(a, b) {
       if (a.dob.age > b.dob.age) return 1;
       if (b.dob.age > a.dob.age) return -1;
