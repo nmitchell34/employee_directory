@@ -33,7 +33,7 @@ class Home extends Component {
     });
   }
 
-  sortEmployeesByAge = (field) => {
+  sortEmployeesByAge = () => {
     console.log("button clicked");
     console.log(field)
     function sortAsc(a, b) {
